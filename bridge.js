@@ -1,6 +1,16 @@
 //Released to the public domain.
 
-var port=phantom.args[0];
+var port;
+
+// changed for phantom 2
+if('object' === typeof(phantom)){
+	port=phantom.args[0];
+} else {
+	var system = require('system');
+	var args = system.args;
+	port=args[1];
+}
+
 var webpage=require('webpage');
 var controlpage=webpage.create();
 
@@ -73,6 +83,9 @@ controlpage.onAlert=function(msg){
 			page.open(request[3], function(status){
 				respond([id, cmdId, 'pageOpened', status]);
 			});
+			break;
+		case 'pageClearMemoryCache':
+			page.clearMemoryCache();
 			break;
 		case 'pageClose':
 			page.close();

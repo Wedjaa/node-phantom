@@ -92,6 +92,9 @@ module.exports={
 										request(socket, [id, 'pageOpenWithCallback', url], callback);
 									}
 								},
+								clearMemoryCache:function(callback){
+									request(socket,[id,'pageClearMemoryCache'],callbackOrDummy(callback));
+								},
 								close:function(callback){
 									request(socket,[id,'pageClose'],callbackOrDummy(callback));
 								},
