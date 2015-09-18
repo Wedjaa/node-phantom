@@ -2,7 +2,7 @@
   "author": "Alex Scheel Meyer (http://www.linkedin.com/in/alexscheelmeyer)",
   "name": "node-phantom",
   "description": "bridge between node.js and PhantomJS",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "homepage": "https://github.com/alexscheelmeyer/node-phantom",
   "repository": {
     "type": "git",
@@ -16,8 +16,8 @@
     "socket.io": "0.9.6"
   },
   "devDependencies": {
-     "mocha": "*",
-     "pngjs": "0.4.0"
+    "mocha": "*",
+    "pngjs": "0.4.0"
   },
   "optionalDependencies": {},
   "engines": {
