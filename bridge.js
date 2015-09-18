@@ -2,8 +2,8 @@
 
 var port;
 
-// changed for phantom 2
-if('object' === typeof(phantom)){
+// changed for phantom 1/2 interop
+if('object' === typeof(phantom) && 'undefined' !== typeof(phantom.args)){
 	port=phantom.args[0];
 } else {
 	var system = require('system');
@@ -86,6 +86,7 @@ controlpage.onAlert=function(msg){
 			break;
 		case 'pageClearMemoryCache':
 			page.clearMemoryCache();
+			respond([id,cmdId,'pageCacheCleared',true]);
 			break;
 		case 'pageClose':
 			page.close();

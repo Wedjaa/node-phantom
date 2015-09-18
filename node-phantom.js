@@ -26,6 +26,7 @@ module.exports={
 			args=args.concat([__dirname + '/bridge.js', port]);
 
 			var phantom=child.spawn(options.phantomPath,args);
+
 			phantom.stdout.on('data',function(data){
 				return console.log('phantom stdout: '+data);
 			});
@@ -144,6 +145,10 @@ module.exports={
 							server.close();
 							io.set('client store expiration', 0);
 							cmds[cmdId].cb();
+							delete cmds[cmdId];
+							break;
+						case 'pageCacheCleared':
+							cmds[cmdId].cb(null,response[3]);
 							delete cmds[cmdId];
 							break;
 						case 'pageJsInjected':
