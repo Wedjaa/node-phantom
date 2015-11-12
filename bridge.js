@@ -14,7 +14,6 @@ if('object' === typeof(phantom) && 'undefined' !== typeof(phantom.args)){
 var webpage=require('webpage');
 var controlpage=webpage.create();
 
-
 function isObject(value) {
         var type = typeof value;
         return type === 'function' || type === 'object' && !!value;
@@ -27,7 +26,7 @@ function isString(value) {
 function resolveCallbacks(object) {
         for (var propName in object) {
 		var value = object[propName];
-		if ( isString(value) && value.indexOf('__phantomCallback__') = 0 ) {
+		if ( isString(value) && value.indexOf('__phantomCallback__') === 0 ) {
 			var newFunction = 'return ' + value.replace('__phantomCallback__', '');
 			object[propName] = phantom.callback(new Function(newFunction)());
 		} else {

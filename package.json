@@ -2,7 +2,7 @@
   "author": "Alex Scheel Meyer (http://www.linkedin.com/in/alexscheelmeyer)",
   "name": "wdj-node-phantom",
   "description": "bridge between node.js and PhantomJS",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "homepage": "https://github.com/Wedjaa/node-phantom",
   "repository": {
     "type": "git",

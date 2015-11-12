@@ -86,9 +86,6 @@ module.exports={
 						switch(response[2]){
 						case 'pageCreated':
 							var pageProxy={
-								callback: function(fn) {
-									return '__phantomCallback__' + fn.toString();
-								},
 								open:function(url, callback){
 									if(callback === undefined){
 										request(socket, [id, 'pageOpen', url]);
@@ -201,6 +198,9 @@ module.exports={
 						callback(unwrapArray(request[2]));
 					});
 					var proxy={
+						callback: function(fn) {
+							return '__phantomCallback__' + fn.toString();
+						},
 						createPage:function(callback){
 							request(socket,[0,'createPage'],callbackOrDummy(callback));
 						},
