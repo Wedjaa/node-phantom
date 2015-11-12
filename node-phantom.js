@@ -86,6 +86,9 @@ module.exports={
 						switch(response[2]){
 						case 'pageCreated':
 							var pageProxy={
+								callback: function(fn) {
+									return '__phantomCallback__' + fn.toString();
+								},
 								open:function(url, callback){
 									if(callback === undefined){
 										request(socket, [id, 'pageOpen', url]);
@@ -124,7 +127,7 @@ module.exports={
 									request(socket,[id,'pageEvaluateAsync',evaluator.toString()].concat(Array.prototype.slice.call(arguments,2)),callbackOrDummy(callback));
 								},
 								set:function(name,value,callback){
-									request(socket,[id,'pageSet',name,value],callbackOrDummy(callback));
+									request(socket,[id,'pageSet',name,value], callbackOrDummy(callback));
 								},
 								get:function(name,callback){
 									request(socket,[id,'pageGet',name],callbackOrDummy(callback));

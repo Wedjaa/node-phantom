@@ -1,3 +1,8 @@
+Notice
+------
+
+This is a fork of node-phantom that we use to resolve a couple of issues with the original module. All the credit goes to the original author of the module.
+
 Node-phantom
 ---------------
 
@@ -30,7 +35,7 @@ Usage
 You can use it pretty much like you would use PhantomJS-Node, for example this is an adaptation of a [web scraping example](http://net.tutsplus.com/tutorials/javascript-ajax/web-scraping-with-node-js/) :
 
 ```javascript
-var phantom=require('node-phantom');
+var phantom=require('wdj-node-phantom');
 phantom.create(function(err,ph) {
   return ph.createPage(function(err,page) {
     return page.open("http://tilomitra.com/repository/screenscrape/ajax.html", function(err,status) {

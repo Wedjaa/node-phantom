@@ -15,6 +15,29 @@ var webpage=require('webpage');
 var controlpage=webpage.create();
 
 
+function isObject(value) {
+        var type = typeof value;
+        return type === 'function' || type === 'object' && !!value;
+}
+
+function isString(value) {
+        return toString.call(value) === '[object String]';
+}
+
+function resolveCallbacks(object) {
+        for (var propName in object) {
+		var value = object[propName];
+		if ( isString(value) && value.indexOf('__phantomCallback__') = 0 ) {
+			var newFunction = 'return ' + value.replace('__phantomCallback__', '');
+			object[propName] = phantom.callback(new Function(newFunction)());
+		} else {
+			if (isObject(value)) {
+				resolveCallbacks(value);
+			}
+		}
+	}
+}
+
 function respond(response){
 //	console.log('responding:'+response);
 	controlpage.evaluate('function(){socket.emit("res",'+JSON.stringify(response)+');}');
@@ -129,6 +152,7 @@ controlpage.onAlert=function(msg){
 			respond([id,cmdId,'pageRenderBase64Done', result]);
 			break;
 		case 'pageSet':
+			resolveCallbacks(request[4]);
 			page[request[3]]=request[4];
 			respond([id,cmdId,'pageSetDone']);
 			break;
