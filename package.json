@@ -1,8 +1,14 @@
 {
   "author": "Alex Scheel Meyer (http://www.linkedin.com/in/alexscheelmeyer)",
   "name": "wdj-node-phantom",
-  "description": "bridge between node.js and PhantomJS",
-  "version": "0.3.2",
+  "description": "Bridge between node.js and PhantomJS",
+  "version": "0.3.5",
+  "contributors": [
+    {
+      "name": "Fabio 'MrWHO' Torchetti",
+      "email": "mrwho@wedjaa.net"
+    }
+  ],
   "homepage": "https://github.com/Wedjaa/node-phantom",
   "repository": {
     "type": "git",
